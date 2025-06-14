@@ -16,7 +16,7 @@ export async function GET({ request }) {
     // Verificar si ya accedió
     const hasAccessed = await redisClient.exists(`user:${uniqueId}`);
     if (hasAccessed) {
-        console.log('🚫 Usuario ya accedió');
+        console.log('🚫 Usuario ya accedió una vez');
         throw redirect(302, '/accessed');
     }
 
