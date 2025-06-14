@@ -1,8 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 import redisClient from '$lib/redis.js';
+import { env } from '$env/dynamic/private';
 
 export async function GET({ request }) {
-    const MAX_ACCESS = 4500;
+    const MAX_ACCESS = parseInt(env.MAX_ACCESS);
 
     // Obtener identificadores únicos
     const ip = request.headers.get('x-forwarded-for') || 'unknown-ip';

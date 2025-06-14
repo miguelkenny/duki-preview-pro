@@ -1,4 +1,5 @@
 node_modules
+redis-cli.js
 
 # Output
 .output
