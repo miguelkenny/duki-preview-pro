@@ -25,7 +25,7 @@ export async function GET({ request }) {
     const currentCount = await redisClient.incr('access_count');
     console.log('🔢 Contador actual:', currentCount);
 
-    if (currentCount > MAX_ACCESS) {
+    if (currentCount > parseInt(MAX_ACCESS)) {
         console.log('🛑 Límite alcanzado');
         throw redirect(302, '/full');
     }
