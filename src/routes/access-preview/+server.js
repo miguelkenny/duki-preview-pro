@@ -6,7 +6,10 @@ export async function GET({ request }) {
     const MAX_ACCESS = parseInt(env.MAX_ACCESS);
 
     // Obtener identificadores únicos
-    const ip = request.headers.get('x-forwarded-for') || 'unknown-ip';
+    // 💡 Obtiene la IP de forma más segura
+    const forwardedFor = request.headers.get('x-forwarded-for');
+    const realIp = request.headers.get('x-real-ip');
+    const ip = forwardedFor?.split(',')[0].trim() || realIp || 'fallback-ip';
     const userAgent = request.headers.get('user-agent');
     const uniqueId = `${ip}-${userAgent}`;
 

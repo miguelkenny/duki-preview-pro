@@ -1,5 +1,5 @@
 node_modules
-redis-cli.js
+reset-access.js
 
 # Output
 .output
